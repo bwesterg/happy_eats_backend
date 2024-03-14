@@ -26,7 +26,7 @@ const createCurrentUser = async (req: Request, res: Response) => {
 
 const updateCurrentUser = async (req: Request, res: Response) => {
   try {
-    const { name, addressLine1, state, country, city } = req.body;
+    const { name, addressLine1, city, state, country } = req.body;
     const user = await User.findById(req.userId);
 
     if (!user) {
@@ -43,7 +43,7 @@ const updateCurrentUser = async (req: Request, res: Response) => {
 
     res.send(user);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(500).json({ message: "updating user" });
   }
 };
