@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import myUserRoute from './routes/MyUserRoute';
 import { v2 as cloudinary } from "cloudinary";
 import myRestaurantRoute from './routes/MyRestaurantRoute';
+import restaurantRoute from "./routes/RestaurantRoute";
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -31,8 +32,10 @@ app.get("/test", async (req: Request, res: Response) => {
 // /api/my/user
 app.use("/api/my/user", myUserRoute);
 app.use("/api/my/restaurant", myRestaurantRoute);
+app.use("/api/restaurant", restaurantRoute);
+// ^^^ user does NOT need to be logged in to use search
 
 app.listen(7000, () => {
   console.log("server started on localhost:7000");
-})
+});
 
