@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   auth0Id: {
-    // Only auth0 name and email are required 
-    // for initial google registration
+    // Only auth0 name and email are required for initial google registration
     type: String,
     required: true
   },
